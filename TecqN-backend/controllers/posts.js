@@ -1,7 +1,7 @@
-import Post from "../models/Post.js";
-import User from "../models/User.js";
+import Post from "../model/Post.js";
+import User from "../model/User.js";
 
-/* CREATE POST */
+/* CREATE */
 export const createPost = async (req, res) => {
   try {
     const { userId, description, picturePath } = req.body;
@@ -13,10 +13,10 @@ export const createPost = async (req, res) => {
       lastName: user.lastName,
       location: user.location,
       description,
-      userPicture: user.picturePath,
+      userPicturePath: user.picturePath,
       picturePath,
       likes: {},
-      Comment: [],
+      comments: [],
     });
     await newPost.save();
 

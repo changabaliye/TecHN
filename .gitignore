@@ -5,3 +5,7 @@
 /client/node_modules
 /TecqN-backend/node_modules
 /TecqN-client/node_modules
+/TecqN-backend/.env
+/TecqN-backend/password.txt
+/TecqN-mobile/node_modules
+/TecqN-mobile/.gitignore

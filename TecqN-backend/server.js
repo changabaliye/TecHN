@@ -1,4 +1,5 @@
 import Express from "express";
+import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
 import { config } from "dotenv";
@@ -7,7 +8,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
-import connect from "./database/config.js";
+// import connect from "./database/config.js";
 import authRoutes from "./routers/auth.js";
 import userRoutes from "./routers/users.js";
 import postRoutes from "./routers/posts.js"
@@ -38,7 +39,7 @@ app.use(cors());
 app.use("/assets", Express.static(path.join(__dirname, "public/assets")));
 
 /** Application Port */
-const port = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8000;
 
 /**File Storage using Multer */
 const storage = multer.diskStorage({
@@ -61,19 +62,17 @@ app.use("/posts", postRoutes);
 
 
 /** Start Server only valid database Connection  */
-connect()
-  .then(() => {
-    try {
-      app.listen(port, () => {
-        console.log(`Server Connected at http://localhost:${port}`);
-        /* ADD DATA ONE TIME */
-        // User.insertMany(users);
-        // Post.insertMany(posts);
-      });
-    } catch (error) {
-      console.log("Cannot connect to the server");
-    }
+mongoose
+  .connect(process.env.ATLAS_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
   })
-  .catch((error) => {
-    console.log("Invalid Database Connection ");
-  });
+  .then(() => {
+    app.listen(PORT, () =>
+      console.log(`Server Connected at http://localhost:${PORT}`)
+    );
+
+    /* ADD DATA ONE TIME */
+    
+  })
+  .catch((error) => console.log(`${error} did not connect`));
