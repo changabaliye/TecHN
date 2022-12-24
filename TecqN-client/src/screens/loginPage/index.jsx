@@ -20,12 +20,6 @@ const LoginPage = () => {
           </form>
         </div>
       </div>
-      <a href="#" className="btn">
-        Forgot Password
-      </a>
-      <a href="#" className="btn signup">
-        Signup
-      </a>
     </div>
     </div>
   );

@@ -11,11 +11,10 @@
   align-items: center;
   min-height: 100vh;
   
-  background: red;
+  background: rgb(229, 221, 221);
 }
 .container {
   position: relative;
-  left: -90px;
   display: flex;
   justify-content: center;
   align-items: center;
