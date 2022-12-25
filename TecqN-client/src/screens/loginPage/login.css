@@ -79,6 +79,9 @@
   justify-content: center;
   align-items: center;
 }
+.Btn-box{
+  cursor: pointer;
+}
 .container .drop .content form .input-box {
   position: relative;
   width: 225px;

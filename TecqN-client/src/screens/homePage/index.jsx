@@ -1,7 +1,13 @@
 import React from "react";
+import { Box, useMediaQuery } from "@mui/material";
+import { Navbar } from "screens";
 
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return (
+    <Box>
+      <Navbar />
+    </Box>
+  );
 };
 
 export default HomePage;
