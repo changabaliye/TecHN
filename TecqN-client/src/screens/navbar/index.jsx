@@ -1,5 +1,4 @@
-import { useState } from "react";
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   IconButton,
@@ -25,24 +24,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { setMode, setLogout } from "../../store";
 import { useNavigate } from "react-router-dom";
 import FlexBetween from "components/FlexBetween";
-
 const Navbar = () => {
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
+   const theme = useTheme();
+   const neutralLight = theme.palette.neutral.light;
+   const dark = theme.palette.neutral.dark;
+   const background = theme.palette.background.default;
+   const primaryLight = theme.palette.primary.light;
+   const alt = theme.palette.background.alt;
+   const fullName = `${"Anand"} ${"Kumar Satapathy"}`;
+  return (
+    <div>Navbar</div>
+  )
+}
 
-  const theme = useTheme();
-  const neutralLight = theme.palette.neutral.light;
-  const dark = theme.palette.neutral.dark;
-  const background = theme.palette.background.default;
-  const primaryLight = theme.palette.primary.light;
-  const alt = theme.palette.background.alt;
-
-  const fullName = `${user.firstName} `;
-
-  return <><h1>Welcome</h1></>;
-};
-
-export default Navbar;
+export default Navbar
