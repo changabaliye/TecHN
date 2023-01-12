@@ -1,35 +1,35 @@
-import React from "react";
-import "./login.css";
-import { useNavigate } from "react-router-dom";
+import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
+import Form from "./Form";
+
 const LoginPage = () => {
-  const navigate = useNavigate();
+  const theme = useTheme();
+  const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
   return (
-    <div className="body">
-      <div className="container">
-        <div className="drop">
-          <div className="content">
-            <h2 className="animate__heartBeat">Login </h2>
-            <form action="">
-              <div className="input-box">
-                <input type="email" name="username" placeholder="Email" />
-              </div>
-              <div className="input-box">
-                <input type="password" name="password" placeholder="Password" />
-              </div>
-              <div className="input-box">
-                <input
-                  className="Btn-box"
-                  onClick={() => navigate("/home")}
-                  type="submit"
-                  value="Login"
-                  href="#"
-                />
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Box>
+      <Box
+        width="100%"
+        backgroundColor={theme.palette.background.alt}
+        p="1rem 6%"
+        textAlign="center"
+      >
+        <Typography fontWeight="bold" fontSize="32px" color="primary">
+          SocialN
+        </Typography>
+      </Box>
+
+      <Box
+        width={isNonMobileScreens ? "50%" : "93%"}
+        p="2rem"
+        m="2rem auto"
+        borderRadius="1.5rem"
+        backgroundColor={theme.palette.background.alt}
+      >
+        <Typography fontWeight="500" variant="h5" sx={{ mb: "1.5rem" }}>
+          Welcome to SocialN
+        </Typography>
+        <Form />
+      </Box>
+    </Box>
   );
 };
 
