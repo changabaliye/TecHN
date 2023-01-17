@@ -18,10 +18,17 @@ import FlexBetween from "components/FlexBetween";
 
 /**Register Schema(validation) */
 const registerSchema = yup.object().shape({
-  firstName: yup.string().min(2).max(10).required("Please Enter Your name"),
-  lastName: yup.string().min(2).max(10).required("required"),
-  email: yup.string().email("invalid email").required("required"),
-  password: yup.string().min(8).required(" Enter Your Password"),
+  firstName: yup
+    .string()
+    .min(2)
+    .max(10)
+    .required("Please enter your first name"),
+  lastName: yup.string().min(2).max(10).required("Please enter your last name"),
+  email: yup
+    .string()
+    .email("Invalid email")
+    .required("Please enter your email"),
+  password: yup.string().min(8).required("Please fill the password"),
   confirmPassword: yup
     .string()
     .required()
@@ -33,8 +40,11 @@ const registerSchema = yup.object().shape({
 
 /**LoginSchema(validation) */
 const loginSchema = yup.object().shape({
-  email: yup.string().email("invalid email").required("required"),
-  password: yup.string().min(8).required("Enter the Password"),
+  email: yup
+    .string()
+    .email("invalid email")
+    .required("Please enter your email"),
+  password: yup.string().min(8).required("Please fill the password"),
 });
 /**InitialValue */
 const initialValuesRegister = {
@@ -65,18 +75,16 @@ const Form = () => {
   const register = async (values, onSubmitProps) => {
     // this allows us to send form info with image
     const formData = new FormData();
+    console.log("FormData",formData);
     for (let value in values) {
       formData.append(value, values[value]);
     }
     formData.append("picturePath", values.picture.name);
 
-    const savedUserResponse = await fetch(
-      "http://localhost:3001/auth/register",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
+    const savedUserResponse = await fetch("http://localhost:5000/auth/register", {
+      method: "POST",
+      body: formData,
+    });
     const savedUser = await savedUserResponse.json();
     onSubmitProps.resetForm();
 
@@ -86,7 +94,8 @@ const Form = () => {
   };
 
   const login = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
+    console.log("Login",values);
+    const loggedInResponse = await fetch("http://localhost:5000/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
@@ -237,14 +246,14 @@ const Form = () => {
               helperText={touched.password && errors.password}
               sx={{ gridColumn: "span 4" }}
             />
-            {isRegister && (
+            {/* {isRegister && (
               <TextField
                 label="ConfirmPassword"
                 type="password"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.confirmPassword}
-                name="password"
+                name="ConfirmPassword"
                 error={
                   Boolean(touched.confirmPassword) &&
                   Boolean(errors.confirmPassword)
@@ -252,7 +261,7 @@ const Form = () => {
                 helperText={touched.confirmPassword && errors.confirmPassword}
                 sx={{ gridColumn: "span 4" }}
               />
-            )}
+            )} */}
           </Box>
 
           {/* BUTTONS */}
@@ -276,7 +285,6 @@ const Form = () => {
                 resetForm();
               }}
               sx={{
-                textDecoration: "underline",
                 color: palette.primary.main,
                 "&:hover": {
                   cursor: "pointer",
@@ -285,7 +293,7 @@ const Form = () => {
               }}
             >
               {isLogin
-                ? "Don't have an account? Sign Up here."
+                ? "Don't have an account? Register here."
                 : "Already have an account? Login here."}
             </Typography>
           </Box>

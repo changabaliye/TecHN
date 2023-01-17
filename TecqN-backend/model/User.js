@@ -34,18 +34,18 @@ const UserSchema = new Schema(
       type: String,
       required: [true, "Password is missing"],
     },
-    confirmPassword: {
-      type: String,
-      required: [true, "Confirm Password is Missing"],
-      /**custom validator*/
-      validate: {
-        validator: function () {
-          return this.password == this.confirmPassword;
-        },
-        /**error message*/
-        message: "Password mismatch",
-      },
-    },
+    // confirmPassword: {
+    //   type: String,
+    //   required: [true, "Confirm Password is Missing"],
+    //   /**custom validator*/
+    //   validate: {
+    //     validator: function () {
+    //       return this.password == this.confirmPassword;
+    //     },
+    //     /**error message*/
+    //     message: "Password mismatch",
+    //   },
+    // },
     picturePath: {
       type: String,
       default: "",
