@@ -11,6 +11,7 @@ const LoginPage = () => {
         backgroundColor={theme.palette.background.alt}
         p="1rem 6%"
         textAlign="center"
+        sx={{ border: "2px solid yellow" }}
       >
         <Typography fontWeight="bold" fontSize="32px" color="primary">
           TechN
@@ -23,6 +24,7 @@ const LoginPage = () => {
         m="2rem auto"
         borderRadius="1.5rem"
         backgroundColor={theme.palette.background.alt}
+        sx={{ border: "4px solid yellow" }}
       >
         <Typography fontWeight="500" variant="h5" sx={{ mb: "1.5rem" }}>
           Welcome to TechN

@@ -67,7 +67,7 @@ const Form = () => {
     formData.append("picturePath", values.picture.name);
 
     const savedUserResponse = await fetch(
-      "http://localhost:5000/auth/register",
+      "http://localhost:3001/auth/register",
       {
         method: "POST",
         body: formData,
@@ -84,7 +84,7 @@ const Form = () => {
   /*Login*/
   const login = async (values, onSubmitProps) => {
     console.log("Login",values);
-    const loggedInResponse = await fetch("http://localhost:5000/auth/login", {
+    const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
