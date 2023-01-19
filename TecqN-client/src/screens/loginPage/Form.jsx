@@ -18,21 +18,10 @@ import FlexBetween from "components/FlexBetween";
 
 /**Register Schema(validation) */
 const registerSchema = yup.object().shape({
-  firstName: yup
-    .string()
-    .min(2)
-    .max(10)
-    .required("Please enter your first name"),
-  lastName: yup.string().min(2).max(10).required("Please enter your last name"),
-  email: yup
-    .string()
-    .email("Invalid email")
-    .required("Please enter your email"),
-  password: yup.string().min(8).required("Please fill the password"),
-  confirmPassword: yup
-    .string()
-    .required()
-    .oneOf([yup.ref("password"), null], "Password must match"),
+  firstName: yup.string().required("required"),
+  lastName: yup.string().required("required"),
+  email: yup.string().email("invalid email").required("required"),
+  password: yup.string().required("required"),
   location: yup.string().required("required"),
   occupation: yup.string().required("required"),
   picture: yup.string().required("required"),
@@ -40,11 +29,8 @@ const registerSchema = yup.object().shape({
 
 /**LoginSchema(validation) */
 const loginSchema = yup.object().shape({
-  email: yup
-    .string()
-    .email("invalid email")
-    .required("Please enter your email"),
-  password: yup.string().min(8).required("Please fill the password"),
+  email: yup.string().email("invalid email").required("required"),
+  password: yup.string().required("required"),
 });
 /**InitialValue */
 const initialValuesRegister = {
@@ -52,7 +38,6 @@ const initialValuesRegister = {
   lastName: "",
   email: "",
   password: "",
-  confirmPassword: "",
   location: "",
   occupation: "",
   picture: "",
@@ -81,10 +66,13 @@ const Form = () => {
     }
     formData.append("picturePath", values.picture.name);
 
-    const savedUserResponse = await fetch("http://localhost:5000/auth/register", {
-      method: "POST",
-      body: formData,
-    });
+    const savedUserResponse = await fetch(
+      "http://localhost:5000/auth/register",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
     const savedUser = await savedUserResponse.json();
     onSubmitProps.resetForm();
 
@@ -247,22 +235,6 @@ const Form = () => {
               helperText={touched.password && errors.password}
               sx={{ gridColumn: "span 4" }}
             />
-            {/* {isRegister && (
-              <TextField
-                label="ConfirmPassword"
-                type="password"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.confirmPassword}
-                name="ConfirmPassword"
-                error={
-                  Boolean(touched.confirmPassword) &&
-                  Boolean(errors.confirmPassword)
-                }
-                helperText={touched.confirmPassword && errors.confirmPassword}
-                sx={{ gridColumn: "span 4" }}
-              />
-            )} */}
           </Box>
 
           {/* BUTTONS */}
