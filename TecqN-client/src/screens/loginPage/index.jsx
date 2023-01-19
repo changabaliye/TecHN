@@ -1,6 +1,6 @@
 import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
 import Form from "./Form";
-
+import Logo from "../../assets/tech.png";
 const LoginPage = () => {
   const theme = useTheme();
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
@@ -9,13 +9,29 @@ const LoginPage = () => {
       <Box
         width="100%"
         backgroundColor={theme.palette.background.alt}
-        p="1rem 6%"
+        p="0.7rem 6%"
         textAlign="center"
         sx={{ border: "2px solid yellow" }}
       >
-        <Typography fontWeight="bold" fontSize="32px" color="primary">
-          TechN
+        <Typography fontWeight="bold" fontSize="42px" color="primary">
+          TecHN
         </Typography>
+        <Box
+          width="100px"
+          height="100px"
+          position="absolute"
+          top="3px"
+          left="10px"
+        >
+          <img
+            src={Logo}
+            alt="Logo"
+            style={{
+              width: "80px",
+              height: "80px",
+            }}
+          />
+        </Box>
       </Box>
 
       <Box
