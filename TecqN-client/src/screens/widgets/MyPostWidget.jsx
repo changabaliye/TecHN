@@ -51,9 +51,9 @@ const MyPostWidget = ({ picturePath }) => {
       headers: { Authorization: `Bearer ${token}` },
       body: formData,
     });
+    
     const posts = await response.json();
-    console.log("🚀 ~ file: MyPostWidget.jsx:55 ~ handlePost ~  posts",  posts)
-  
+    console.log("🚀 ~ file: MyPostWidget.jsx:56 ~ handlePost ~ posts", posts)
     dispatch(setPosts({ posts }));
     setImage(null);
     setPost("");
@@ -157,7 +157,7 @@ const MyPostWidget = ({ picturePath }) => {
         )}
 
         <Button
-          
+          disabled={!post}
           onClick={handlePost}
           sx={{
             color: palette.background.alt,
