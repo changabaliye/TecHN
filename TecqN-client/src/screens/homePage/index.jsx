@@ -6,6 +6,7 @@ import UserWidget from "screens/widgets/UserWidget";
 import MyPostWidget from "screens/widgets/MyPostWidget";
 import PostsWidget from "screens/widgets/PostsWidget";
 import FriendListWidget from "screens/widgets/FriendListWidget";
+import AdvertWidget from "screens/widgets/AdvertWidget";
 
 const HomePage = () => {
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
@@ -33,6 +34,7 @@ const HomePage = () => {
         </Box>
         {isNonMobileScreens && (
           <Box flexBasis="26%">
+            <AdvertWidget/>
             <Box m="2rem 0" />
             <FriendListWidget userId={_id} />
           </Box>
