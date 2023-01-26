@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { Navbar } from "screens";
 import UserWidget from "screens/widgets/UserWidget";
 import MyPostWidget from "screens/widgets/MyPostWidget";
+import PostsWidget from "screens/widgets/PostsWidget";
+import FriendListWidget from "screens/widgets/FriendListWidget";
 
 const HomePage = () => {
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
@@ -27,10 +29,12 @@ const HomePage = () => {
           mt={isNonMobileScreens ? undefined : "2rem"}
         >
           <MyPostWidget picturePath={picturePath} />
+          <PostsWidget userId={_id} />
         </Box>
         {isNonMobileScreens && (
           <Box flexBasis="26%">
             <Box m="2rem 0" />
+            <FriendListWidget userId={_id} />
           </Box>
         )}
       </Box>

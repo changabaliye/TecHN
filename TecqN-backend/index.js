@@ -48,8 +48,11 @@ app.post("/auth/register", upload.single("picture"), register);
 app.post("/posts", verifyToken, upload.single("picture"), createPost);
 
 /* ROUTES */
+/**Authentication Routes */
 app.use("/auth", authRoutes);
+/**User Routes */
 app.use("/users", userRoutes);
+/**Posts Routes */
 app.use("/posts", postRoutes);
 
 /* MONGOOSE SETUP */

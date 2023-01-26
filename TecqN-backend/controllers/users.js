@@ -1,6 +1,7 @@
 import User from "../models/User.js";
 
 /* READ */
+/**Add New User */
 export const getUser = async (req, res) => {
   try {
     const { id } = req.params;
@@ -10,7 +11,7 @@ export const getUser = async (req, res) => {
     res.status(404).json({ message: err.message });
   }
 };
-
+/**Get UserFriends */
 export const getUserFriends = async (req, res) => {
   try {
     const { id } = req.params;
