@@ -17,7 +17,8 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "multer-gridfs-storage": "^5.0.2",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "progress-bar": "^0.1.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
